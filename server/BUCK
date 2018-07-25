@@ -1,0 +1,8 @@
+rust_binary(
+    name = "server",
+    srcs = glob(["src/*.rs"]),
+    deps = [
+        "//project1:project1",
+        "//third-party:tokio",
+    ]
+)

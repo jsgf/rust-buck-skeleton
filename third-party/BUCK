@@ -1,0 +1,19 @@
+# Normally this would be built automatically with complete pathnames
+prebuilt_rust_library(
+    name="futures",
+    rlib=glob(["tp/target/release/deps/libfutures-*.rlib"])[0],
+    visibility=["PUBLIC"],
+)
+
+prebuilt_rust_library(
+    name="tokio",
+    rlib=glob(["tp/target/release/deps/libtokio-*.rlib"])[0],
+    visibility=["PUBLIC"],
+    deps = [
+        # Normally this would have all the prebuilt deps,
+        # representing the full transitive dependency graph.
+        # It's too hard to maintain manually; normally its
+        # automated from metadata produced by cargo during the
+        # build.
+    ]
+)

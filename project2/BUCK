@@ -1,0 +1,6 @@
+rust_library(
+    name="project2",
+    srcs=glob(["src/*.rs"]),
+    visibility=["PUBLIC"],
+    deps=[]
+)
