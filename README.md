@@ -37,6 +37,11 @@ its empty).
 
 The syntax is basically Python.
 
+Buck supports a couple of different wildcard syntaxes for rules:
+- `//foo/...` everything under the `foo` directory recursively
+- `//foo/:` every rule in the `foo` directory
+- `foo:foo` equivalent to `//foo:foo`
+
 ## Building things
 
 Build the server executable and show its location in `buck-out`:
@@ -57,6 +62,15 @@ $ buck build project1:project1#check
 Generate save-analysis (nightly/dev rustc only):
 ```
 $ buck build --show-json-output project1:project1#save-analysis
+```
+
+Run all tests under project1:
+```
+$ buck test project1/...
+```
+Or just run a single test binary as a normal executable:
+```
+$ buck run project1:project1-unittest
 ```
 
 ## Querying things

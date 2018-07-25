@@ -7,3 +7,13 @@ rust_library(
         "//third-party:futures"
     ],
 )
+
+# By convention our infrastructure generates test rules automatically by default
+rust_test(
+    name = "project1-unittest",
+    srcs = glob(["src/*.rs"]),
+    deps = [
+        "//project2:project2",
+        "//third-party:futures"
+    ],
+)

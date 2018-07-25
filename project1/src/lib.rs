@@ -8,3 +8,8 @@ pub fn addone(
 ) -> impl Future<Item = u32, Error = ()> + Send {
     f.map(|v| project2::add(v, 1))
 }
+
+#[test]
+fn simpletest() {
+    assert_eq!(1+1, 2);
+}
