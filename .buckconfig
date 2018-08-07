@@ -1,0 +1,14 @@
+[rust]
+  # Don't include the flavor in the generated executable name
+  unflavored_binaries = true
+  # Pass --remap-path-prefix to rustc
+  remap_src_paths = yes
+  # Build/link static libs even if we're using a shared build
+  # (This is necessary because prebuild_rust_library currently only supports .rlib files,
+  # which always get statically linked into any .so that depends on them. If there's a diamond
+  # in the dep graph - ie A depends on B and C, which both depend on D, then D would end up getting
+  # linked in twice, causing rustc to complain.)
+  force_rlib = true
+  # Link static libstd, etc, even for shared builds. This is mainly to prevent runtime dependencies
+  # on the shared library path.
+  prefer_static_libs = true
